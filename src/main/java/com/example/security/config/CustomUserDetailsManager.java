@@ -31,6 +31,6 @@ public class CustomUserDetailsManager implements UserDetailsService {
         Customer customer = customerRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(customer.getRole()));
-        return new User(customer.getEmail(), customer.getPassword(), authorities);
+        return new User(customer.getEmail(), customer.getPwd(), authorities);
     }
 }

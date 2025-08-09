@@ -21,6 +21,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
+            .csrf(csrfConfig -> csrfConfig.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/dashboard").authenticated()
                 .anyRequest().permitAll());
@@ -53,7 +54,7 @@ public class SecurityConfig {
         return new JdbcUserDetailsManager(dataSource);
     }
 
-    //@Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
