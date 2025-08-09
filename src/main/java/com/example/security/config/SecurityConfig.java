@@ -48,7 +48,7 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user1, user2, user3);
     }
 
-    @Bean
+    //@Bean
     public UserDetailsService userDetailsManager(DataSource dataSource) {
         return new JdbcUserDetailsManager(dataSource);
     }
