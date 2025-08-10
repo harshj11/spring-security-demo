@@ -26,7 +26,7 @@ public class UserController {
         try {
             String password = customer.getPwd();
             String hashedPassword = passwordEncoder.encode(password);
-
+            customer.setPwd(hashedPassword);
             Customer savedCustomer = customerRepository.save(customer);
 
             if(savedCustomer.getId()>0) {
